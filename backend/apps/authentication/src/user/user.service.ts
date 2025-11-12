@@ -4,11 +4,18 @@ import { UserRepository } from './user.repository';
 import { CreateUserDto } from '../../../../common/dto/auth/create-user.dto';
 import { UserRto } from '../../../../common/dto/auth/user.rto';
 
+interface User {
+  _id: { toString(): string };
+  email: string;
+  name: string;
+  createdAt: Date;
+}
+
 @Injectable()
 export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
 
-  private toRto(user: any): UserRto {
+  private toRto(user: User): UserRto {
     return {
       id: user._id.toString(),
       email: user.email,
@@ -30,11 +37,11 @@ export class UserService {
       passwordHash,
     });
 
-    return this.toRto(user);
+    return this.toRto(user as unknown as User);
   }
 
   async listUsers(): Promise<UserRto[]> {
     const users = await this.userRepository.findAll();
-    return users.map(u => this.toRto(u));
+    return users.map((u) => this.toRto(u as unknown as User));
   }
 }
