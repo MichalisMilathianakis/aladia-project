@@ -13,6 +13,8 @@ export default defineConfig({
       '@': path.resolve(__dirname, './'),
     },
     pool: 'threads',
+    threads: false,
+    isolate: false,
     testTimeout: 20000, 
   },
 })
