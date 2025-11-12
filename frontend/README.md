@@ -74,11 +74,11 @@ Create `.env.local`:
 NEXT_PUBLIC_API_BASE=http://localhost:3000
 ```
 
-### 4️⃣ Run Development Server
+### Run Development Server
 ```bash
 npm run dev
 ```
-➡️ App available at: **http://localhost:3000**
+App available at: **http://localhost:3000**
 
 ---
 
@@ -134,7 +134,7 @@ Ensure the backend (Gateway) is running on **http://localhost:3000**.
 
 ---
 
-## 🧱 Build for Production
+## Build for Production
 
 ```bash
 npm run build
