@@ -5,7 +5,9 @@ import { User, UserDocument } from './user.schema';
 
 @Injectable()
 export class UserRepository {
-  constructor(@InjectModel(User.name) private readonly userModel: Model<UserDocument>) {}
+  constructor(
+    @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
+  ) {}
 
   create(data: Partial<User>) {
     const doc = new this.userModel(data);
